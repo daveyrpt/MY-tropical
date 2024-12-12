@@ -193,6 +193,41 @@ export default function Home() {
           );
       };//StackedAreaChart
 
+  function TableOne(){
+
+    return(
+      <div>
+      <table>
+        <thead>
+         <tr>
+          <td>Date</td>
+          <td>Total Arival</td>
+          <td>Arrival Male</td>
+          <td>Arrival Female</td>
+        </tr> 
+        </thead>
+        
+        <tbody>
+        <tr>
+          <td>1/1/2020</td>
+          <td>1000</td>
+          <td>500</td>
+          <td>500</td>
+        </tr>
+        <tr>
+          <td>1/2/2020</td>
+          <td>14000</td>
+          <td>8000</td>
+          <td>6000</td>
+        </tr>
+        </tbody>
+        
+      </table>
+      </div>
+
+    );
+  };
+
   return (
     <>
       <section className="flex justify-between bg-[#edf2f9] text-black sticky top-0 z-50 shadow-xl">
@@ -206,7 +241,7 @@ export default function Home() {
         </nav>
       </section>
       
-      <section className='ml-4 mr-4 flex relative z-0'>
+      <section className='ml-4 mr-4 flex relative'>
         <div className='shadow-lg bg-emerald-50'>
           <div className='py-4 px-2 font-bold text-2xl text-slate-900'>
             <p>Malayisa Tourist Spots</p>
@@ -216,12 +251,13 @@ export default function Home() {
           </div>
           <div className='h-5'/>
         </div>
-        <div className="bg-slate-300 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 ml-4 w-[25rem] rounded-lg">
+        <div className="bg-slate-300 px-4 pt-5 pb-8 shadow-xl ring-1 ring-gray-900/5 ml-4 w-[25rem] rounded-lg">
           <div>
-            <p className='text-black'>This is Graph2 section </p>
+            <p className='text-black'>Tourist Arrival per Month</p>
           </div>
-          <div className='items-center mt-20'>
-            <BarChartComponent/> 
+          <div className='items-center'>
+            {/* <BarChartComponent/> */}
+            <TableOne/>
           </div>
           
         </div>
@@ -234,14 +270,14 @@ export default function Home() {
               <StackedAreaChart/>
             </div>
 
-            <div className=' aspect-square rounded-xl bg-emerald-50 shadow-xl'>
-            <p>This is Graph 4</p>
+            <div className=' aspect-square rounded-xl bg-emerald-50 shadow-xl text-center'>
+            <p className='text-black font-bold text-2xl mb-3 pt-4'>PlaceHolder For Graph Title</p>
             <MockChart/>
             </div>
 
-            <div className=' aspect-square rounded-xl bg-emerald-50 shadow-xl'>
-              <p>This is Graph 5</p>
-              <div className='flex items-center justify-center py-20'>
+            <div className=' aspect-square rounded-xl bg-emerald-50 shadow-xl text-center'>
+              <p className='text-black font-bold text-2xl mb-3 pt-4'>Placeholder Title For Graph 5</p>
+              <div className='flex items-center justify-center py-10'>
                 <DoughnutChart />
               </div>
             </div>

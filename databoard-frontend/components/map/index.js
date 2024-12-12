@@ -2,7 +2,7 @@
 import dynamic from  "next/dynamic";
 
 
-const Map = dynamic( () => import('../../public/Map'),
+const Map = dynamic( () => import('./Map'),
 {
     ssr: false
 });
