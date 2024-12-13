@@ -7,8 +7,11 @@ import Map from '../components/map';
 import '../app/page.module.css';
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Rectangle } from 'recharts';
+import Link from 'next/link';
 
 //import MockChart from '@/components/map/MockChart';
+
+//import '../components/loginForm/page';
 
 export default function Home() {
 
@@ -232,16 +235,20 @@ export default function Home() {
     <>
       <section className="flex justify-between bg-[#edf2f9] text-black sticky top-0 z-50 shadow-xl">
         <div className="flex gap-5 mt-2 mx-3">
-          <img className="rounded-full overflow-hidden h-[40px] w-[40px]" src="http://thispersondoesnotexist.com/" alt="profile-picture"/>
+          <img className="rounded-full overflow-hidden h-[40px] w-[40px]" src="/logo.png" alt="profile-picture"/>
           <h1 className ="font-sans font-bold text-3xl ite">MY Tropical</h1>
         </div>
 
         <nav>
-          <button className="px-4 mx-4 mt-3 pt-1 pb-1 bg-emerald-600 rounded-xl">Login</button>
+          <Link href='/loginForm'>
+          <button 
+            className="px-4 mx-4 mt-3 pt-1 pb-1 bg-emerald-600 rounded-xl">Login</button>
+          </Link>
         </nav>
+
       </section>
       
-      <section className='ml-4 mr-4 flex relative'>
+      <section className='ml-4 mr-4 flex relative z-0'>
         <div className='shadow-lg bg-emerald-50'>
           <div className='py-4 px-2 font-bold text-2xl text-slate-900'>
             <p>Malayisa Tourist Spots</p>
@@ -251,9 +258,9 @@ export default function Home() {
           </div>
           <div className='h-5'/>
         </div>
-        <div className="bg-slate-300 px-4 pt-5 pb-8 shadow-xl ring-1 ring-gray-900/5 ml-4 w-[25rem] rounded-lg">
+        <div className="bg-emerald-50 px-4 pt-5 pb-8 shadow-xl ring-1 ring-gray-900/5 ml-4 w-[25rem] rounded-lg">
           <div>
-            <p className='text-black'>Tourist Arrival per Month</p>
+            <p className='text-black font-bold text-2xl'>Tourist Arrival per Month</p>
           </div>
           <div className='items-center'>
             {/* <BarChartComponent/> */}
