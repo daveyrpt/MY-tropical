@@ -6,7 +6,7 @@ import Map from '../components/map';
 
 import '../app/page.module.css';
 
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Rectangle } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import Link from 'next/link';
 
 //import MockChart from '@/components/map/MockChart';
@@ -39,76 +39,48 @@ export default function Home() {
     );
   };// BarChart
 
-  function DoughnutChart (){
-    const data = [
-      { name: "Group A", value: 2400 },
-      { name: "Group B", value: 4567 },
-      { name: "Group C", value: 1398 },
-      { name: "Group D", value: 9800 },
-      { name: "Group E", value: 3908 },
-      { name: "Group F", value: 4800 }
-    ];
-
-      return (
-        <ResponsiveContainer width={300} height={300}>
-        <PieChart width={300} height={300}>
-          <Pie
-            dataKey="value"
-            data={data}
-            //cx={100}
-            //cy={200}
-            innerRadius={75}
-            outerRadius={150}
-            fill="#b195d2"
-          />
-          <Tooltip />
-        </PieChart>
-        </ResponsiveContainer>
-      );
-  };//Doughnut
-
   function MockChart(){
     const data = [
         {
-          name: 'Page A',
-          uv: 4000,
-          pv: 2400,
+          name: 'Jan',
+          WM: 4000,
+          EM: 2400,
           amt: 2400,
         },
         {
-          name: 'Page B',
-          uv: 3000,
-          pv: 1398,
+          name: 'Feb',
+          WM: 3000,
+          EM: 1398,
           amt: 2210,
         },
         {
-          name: 'Page C',
-          uv: 2000,
-          pv: 9800,
+          name: 'Mar',
+          WM: 2000,
+          EM: 9800,
           amt: 2290,
         },
         {
-          name: 'Page D',
-          uv: 2780,
-          pv: 3908,
+          name: 'Apr',
+          WM: 2780,
+          EM: 3908,
           amt: 2000,
         },
         {
-          name: 'Page E',
-          uv: 1890,
-          pv: 4800,
+          name: 'May',
+          WM: 1890,
+          EM: 4800,
           amt: 2181,
         },
         {
-          name: 'Page F',
-          uv: 2390,
-          pv: 3800,
+          name: 'June',
+          WM: 2390,
+          EM: 3800,
           amt: 2500,
         },
         {
-          name: 'Page G',
-          uv: 3490,
-          pv: 4300,
+          name: 'July',
+          WM: 3490,
+          EM: 4300,
           amt: 2100,
         },
       ];
@@ -131,9 +103,8 @@ export default function Home() {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="pv" fill="#8884d8"/>
-              <Bar dataKey="uv" fill="#82ca9d" />
-              <Bar dataKey='amt' fill='#12b5d1' />
+              <Bar dataKey="WM" fill="#8884d8"/>
+              <Bar dataKey="EM" fill="#82ca9d" />
             </BarChart>
           </ResponsiveContainer>
             
@@ -195,6 +166,40 @@ export default function Home() {
               
           );
       };//StackedAreaChart
+
+function TouristOrigin(){
+  const data = [
+    { name: 'Australia', value: 120000 },
+    { name: 'Brunei', value: 300000 },
+    { name: 'China', value: 220000 },
+    { name: 'Indonesia', value: 90000 },
+    { name: 'India', value: 40000 },
+    { name: 'Philiphine', value: 50000 },
+    { name: 'U.S.A', value: 100000 },
+    { name: 'Brazil', value: 60000 },
+  ];
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042',
+    '#6646ef', '#d2f663', '#fb0366', '#23343d'
+  ];
+
+    return (
+      <PieChart width={300} height={300}>
+        <Pie
+          data={data}
+          innerRadius={75}
+          outerRadius={150}
+          fill="#8884d8"
+          paddingAngle={2}
+          dataKey="value"
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+        <Tooltip/>
+      </PieChart>
+    );
+};
 
   function TableOne(){
 
@@ -263,7 +268,6 @@ export default function Home() {
             <p className='text-black font-bold text-2xl'>Tourist Arrival per Month</p>
           </div>
           <div className='items-center'>
-            {/* <BarChartComponent/> */}
             <TableOne/>
           </div>
           
@@ -278,24 +282,24 @@ export default function Home() {
             </div>
 
             <div className=' aspect-square rounded-xl bg-emerald-50 shadow-xl text-center'>
-            <p className='text-black font-bold text-2xl mb-3 pt-4'>PlaceHolder For Graph Title</p>
-            <MockChart/>
+              <p className='text-black font-bold text-2xl mb-3 pt-4'>Tourist Nationalities by Arival Jan - Oct 2024</p>
+              <div className='flex items-center justify-center py-10'>
+                <TouristOrigin />
+              </div>
             </div>
 
             <div className=' aspect-square rounded-xl bg-emerald-50 shadow-xl text-center'>
-              <p className='text-black font-bold text-2xl mb-3 pt-4'>Placeholder Title For Graph 5</p>
-              <div className='flex items-center justify-center py-10'>
-                <DoughnutChart />
+              <p className='text-black font-bold text-2xl mb-2 pt-4'>Arrival to West Malaysia / East Malaysia</p>
+              <div className='flex items-center justify-center py-3'>
+                <MockChart />
               </div>
             </div>
         </div>
       </section>
 
-      <section className='flex flex-1 flex-col gap-4 p-4'>
-        <div className='grid auto-rows-min gap-4 md:grid-cols-3'>
-          <div className=' aspect-square rounded-xl bg-slate-950' />
-          <div className=' aspect-square rounded-xl bg-slate-950' />
-          <div className=' aspect-square rounded-xl bg-slate-950' />
+      <section>
+        <div className='h-[2rem] w-auto bg-emerald-950 text-white text-center'>
+        <p>For inquiries contact inquiries@example.com</p>
         </div>
       </section>
     </>
