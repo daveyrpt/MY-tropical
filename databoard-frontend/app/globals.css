@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+
+    body{
+        @apply bg-[#EDF2F9] text-black relative;
+    }
+}
+
+/*
+g-gradient-to-r from-blue-500 to-green-500
+
+*/
